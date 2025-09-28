@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { generateMnemonic } from "bip39";
+import SolanaWallet from "./solana-wallet";
+import EthereumWallet from "./ethereum-wallet";
 
 export default function Wallet() {
   const [mnemonic, setMnemonic] = useState<string>("");
@@ -35,6 +37,9 @@ export default function Wallet() {
       )}
       <br />
       <button onClick={handleCopySeedPhrase}>Copy Seed Phrase</button>
+
+      <SolanaWallet mnemonic={mnemonic} />
+      <EthereumWallet mnemonic={mnemonic} />
     </div>
   );
 }
