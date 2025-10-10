@@ -1,3 +1,4 @@
+"use client";
 import React, { FC, useMemo } from "react";
 import {
   ConnectionProvider,
@@ -9,8 +10,11 @@ import {
   WalletModalProvider,
   WalletDisconnectButton,
   WalletMultiButton,
+  WalletConnectButton,
 } from "@solana/wallet-adapter-react-ui";
 import { clusterApiUrl } from "@solana/web3.js";
+import "@solana/wallet-adapter-react-ui/styles.css";
+import AirDrop from "./airdrop";
 
 export const Provider: FC<{ children: React.ReactNode }> = ({ children }) => {
   const network = WalletAdapterNetwork.Devnet;
@@ -45,6 +49,7 @@ export const Provider: FC<{ children: React.ReactNode }> = ({ children }) => {
           <WalletMultiButton />
           <WalletDisconnectButton />
           {children}
+          <AirDrop />
         </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>
