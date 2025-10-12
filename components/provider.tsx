@@ -43,8 +43,8 @@ export const Provider: FC<{ children: React.ReactNode }> = ({ children }) => {
   );
 
   return (
-    <ConnectionProvider endpoint={"https://api.devnet.solana.com"}>
-      <WalletProvider wallets={[]} autoConnect>
+    <ConnectionProvider endpoint={process.env.NEXT_PUBLIC_RPC_URL!}>
+      <WalletProvider wallets={[]}>
         <WalletModalProvider>
           <WalletMultiButton />
           <WalletDisconnectButton />
