@@ -1,24 +1,32 @@
 "use client";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
-import React from "react";
+import { LAMPORTS_PER_SOL } from "@solana/web3.js";
+import React, { useState } from "react";
 
 const AirDrop = () => {
   const wallet = useWallet();
   const { connection } = useConnection();
+  const [amount, setAmount] = useState(0);
 
-  const handleAirdrop = async () => {
+  const handleAirdrop = () => {
     if (!wallet.publicKey) {
       return;
     }
-    const airdrop = await connection.requestAirdrop(
+    console.log(wallet.publicKey.toBase58() + " " + amount * LAMPORTS_PER_SOL);
+    const airdrop = connection.requestAirdrop(
       wallet.publicKey,
-      100000000
+      amount * LAMPORTS_PER_SOL
     );
+    alert(`Airdropped ${airdrop} SOL`);
   };
   return (
     <div>
       {wallet.publicKey?.toString()}
-      <input type="text" placeholder="Enter amount" />
+      <input
+        onChange={(e) => setAmount(Number(e.target.value))}
+        type="text"
+        placeholder="Enter amount"
+      />
       <button onClick={handleAirdrop}>Airdrop</button>
     </div>
   );
