@@ -16,7 +16,7 @@ import AirDrop from "./airdrop";
 import ShowBalance from "./show-balance";
 import SendTokens from "./send-tokens";
 
-export const Provider: FC = () => {
+export const Provider: FC<{ children: React.ReactNode }> = ({ children }) => {
   const network = WalletAdapterNetwork.Devnet;
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);
 
@@ -41,6 +41,7 @@ export const Provider: FC = () => {
               <div className="flex justify-center my-2">
                 <WalletMultiButton className="!bg-gray-900 hover:!bg-gray-800 !rounded-lg !h-12 !px-6 !font-medium !transition-all" />
               </div>
+              {children}
             </header>
 
             {/* Main Content Grid */}
