@@ -34,7 +34,7 @@ export const Provider: FC = () => {
             {/* Header */}
             <header className="text-center mb-8">
               <h1 className="text-4xl font-bold text-gray-900 ">
-                Solana Wallet -(Devnet)
+                Solana Wallet - DApp (Devnet)
               </h1>
 
               {/* Wallet Connection Button */}
